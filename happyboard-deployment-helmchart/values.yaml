@@ -1,0 +1,82 @@
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""
+
+ingress: 
+  enabled: true
+  host: happyboard.io.vn
+
+serviceAccount: 
+  create: false
+  annotations: {}
+  name: ""
+
+services: 
+  backend_service: 
+    replicas: 2
+    minReplicas: 2
+    maxReplicas: 4
+    path: /v1/health
+    image: duymt3/happyboard-be
+    disableProbe: false
+    command: ["npm", "run", "nodemon"]
+    port: 80
+    containerPort: 8080
+    type: ClusterIP
+    envFromSecret: true
+    secretName: happyboard-be-secret
+    prefix: /be
+
+  frontend_service: 
+    replicas: 2
+    minReplicas: 2
+    maxReplicas: 4
+    path: /v1/health
+    image: duymt3/happyboard-fe
+    disableProbe: false
+    command: ["npm", "run", "dev"]
+    port: 80
+    containerPort: 8888
+    type: ClusterIP
+    envFromSecret: true
+    secretName: happyboard-fe-secret
+    prefix: /fe
+  
+  cms_service: 
+    replicas: 2
+    minReplicas: 2
+    maxReplicas: 4
+    path: /v1/health
+    image: duymt3/happyboard-cms
+    disableProbe: false
+    command: ["npm", "run", "dev"]
+    port: 80
+    containerPort: 3000
+    type: ClusterIP
+    envFromSecret: true
+    secretName: happyboard-cms-secret
+    prefix: /cms
+  
+  notification_service: 
+    replicas: 2
+    minReplicas: 2
+    maxReplicas: 4
+    path: /v1/health
+    image: duymt3/happyboard-noti
+    disableProbe: false
+    command: ["npm", "run", "dev"]
+    port: 80
+    containerPort: 8001
+    type: ClusterIP
+    envFromSecret: true
+    secretName: happyboard-noti-secret
+    prefix: /notification
+
+autoscalling: 
+enabled: true
+minReplicas: 1
+maxReplicas: 2
+averageUtilization: 60
+
+
