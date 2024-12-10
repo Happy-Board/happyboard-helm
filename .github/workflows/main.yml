@@ -30,7 +30,7 @@ jobs:
       # Setup kubectl and authenticate to EKS
       - name: Setup kubectl
         run: |
-          aws eks update-kubeconfig --name happyboard-cluster --region ap-southeast-1
+          aws eks update-kubeconfig --name happyboard-cluster --region ${{ secrets.AWS_REGION }}
 
       # Deploy application
       - name: Deploy using helm
