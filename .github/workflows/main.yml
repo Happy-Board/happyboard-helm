@@ -8,7 +8,7 @@ on:
 env: 
     KUBE_NAMESPACE: "happyboard-prod"
     HELM_RELEASE_NAME: "happyboard"
-    HELM_CHART_PATH: "./"
+    HELM_CHART_PATH: "./happyboard-deployment-helmchart"
 
 jobs:
   deploy:
