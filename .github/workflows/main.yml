@@ -33,6 +33,11 @@ jobs:
         run: |
           aws eks update-kubeconfig --name happyboard-cluster --region ap-southeast-1
 
+      # Debug kubeconfig
+      - name: Debug kubeconfig
+        run: |
+          cat ~/.kube/config
+
       # Deploy application
       - name: Deploy using helm
         run: |
