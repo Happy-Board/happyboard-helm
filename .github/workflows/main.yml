@@ -38,6 +38,18 @@ jobs:
         run: |
           cat ~/.kube/config
 
+               # Ensure namespace exists
+
+      # Ensure namespace exists
+      - name: Ensure namespace exists
+        run: |
+          kubectl get namespace $KUBE_NAMESPACE || kubectl create namespace $KUBE_NAMESPACE
+
+      # Set kubeconfig environment variable
+      - name: Set kubeconfig environment variable
+        run: |
+          export KUBECONFIG=~/.kube/config
+
       # Deploy application
       - name: Deploy using helm
         run: |
