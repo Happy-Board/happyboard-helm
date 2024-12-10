@@ -5,11 +5,11 @@ on:
     branches:
       - main
 
-env: 
-    KUBE_NAMESPACE: "happyboard-prod"
-    HELM_RELEASE_NAME: "happyboard"
-    HELM_CHART_PATH: "./happyboard-deployment-helmchart"
-    CLUSTER_NAME: "happyboard-cluster"
+env:
+  KUBE_NAMESPACE: "happyboard-prod"
+  HELM_RELEASE_NAME: "happyboard"
+  HELM_CHART_PATH: "./happyboard-deployment-helmchart"
+  CLUSTER_NAME: "happyboard-cluster"
 
 jobs:
   deploy:
@@ -29,9 +29,9 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       # Setup kubectl and authenticate to EKS
-      # - name: Setup kubectl
-      #   run: |
-      #     aws eks update-kubeconfig --name $CLUSTER_NAME --region ${{ secrets.AWS_REGION }}
+      - name: Setup kubectl
+        run: |
+          aws eks update-kubeconfig --name happyboard-cluster --region ap-southeast-1
 
       # Deploy application
       - name: Deploy using helm
