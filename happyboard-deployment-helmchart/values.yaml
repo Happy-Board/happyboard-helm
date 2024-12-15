@@ -13,7 +13,7 @@ serviceAccount:
   name: ""
 
 services: 
-  backend_service: 
+  backend-service: 
     replicas: 2
     minReplicas: 2
     maxReplicas: 4
@@ -28,7 +28,7 @@ services:
     secretName: happyboard-be-secret
     prefix: /be
 
-  frontend_service: 
+  frontend-service: 
     replicas: 2
     minReplicas: 2
     maxReplicas: 4
@@ -43,7 +43,7 @@ services:
     secretName: happyboard-fe-secret
     prefix: /fe
   
-  cms_service: 
+  cms-service: 
     replicas: 2
     minReplicas: 2
     maxReplicas: 4
@@ -58,7 +58,7 @@ services:
     secretName: happyboard-cms-secret
     prefix: /cms
   
-  notification_service: 
+  notification-service: 
     replicas: 2
     minReplicas: 2
     maxReplicas: 4
