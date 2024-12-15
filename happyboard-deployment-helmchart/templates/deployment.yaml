@@ -21,12 +21,12 @@ spec:
           image: {{ $service.image }}
           imagePullPolicy: Always
           resources: 
-            requests: 
-              memory: {{ .Values.resources.requests.memory }}
-              cpu: {{ .Values.resources.requests.cpu }}
+            requests:
+              memory: "64Mi"
+              cpu: "50m"
             limits: 
-              memory: {{ .Values.resources.limits.memory }}
-              cpu: {{ .Values.resources.limits.cpu }}
+              memory: "128Mi"
+              cpu: "100m"
           ports:
             - containerPort: {{ $service.containerPort }}
           command: 
